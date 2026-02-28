@@ -1,0 +1,65 @@
+{
+  "name": "checkout-service",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node -r reflect-metadata src/main.ts",
+    "start:dev": "ts-node -r reflect-metadata src/main.ts",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".*\\.spec\\.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(uuid)/)"
+    ],
+    "collectCoverageFrom": [
+      "**/*.(t|j)s"
+    ],
+    "coverageDirectory": "../coverage",
+    "testEnvironment": "node"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^5.4.0",
+    "@as-integrations/express5": "^1.1.2",
+    "@nestjs/apollo": "^13.2.4",
+    "@nestjs/common": "^11.1.14",
+    "@nestjs/core": "^11.1.14",
+    "@nestjs/graphql": "^13.2.4",
+    "@nestjs/platform-express": "^11.1.14",
+    "@nestjs/typeorm": "^11.0.0",
+    "axios": "^1.13.6",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.4",
+    "graphql": "^16.13.0",
+    "reflect-metadata": "^0.2.2",
+    "rxjs": "^7.8.2",
+    "sql.js": "^1.14.0",
+    "typeorm": "^0.3.28"
+  },
+  "devDependencies": {
+    "@nestjs/testing": "^11.1.14",
+    "@types/jest": "^30.0.0",
+    "@types/node": "^25.3.2",
+    "@types/uuid": "^10.0.0",
+    "jest": "^30.2.0",
+    "ts-jest": "^29.4.6",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3",
+    "uuid": "^9.0.1"
+  }
+}

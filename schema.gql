@@ -1,0 +1,110 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+type AppliedReward {
+  code: String!
+  discountCents: Int!
+}
+
+type CartItemType {
+  id: String!
+  menuItemId: String!
+  name: String!
+  priceCents: Int!
+  quantity: Int!
+  subtotalCents: Int!
+}
+
+type CartType {
+  appliedReward: AppliedReward
+  id: String!
+  items: [CartItemType!]!
+  subtotalCents: Int!
+  totalCents: Int!
+  userId: String!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type MenuItem {
+  available: Boolean!
+  category: String!
+  description: String!
+  id: String!
+  name: String!
+  priceCents: Int!
+}
+
+type Mutation {
+  """Add an item to the cart"""
+  addToCart(menuItemId: String!, quantity: Int!): CartType!
+
+  """
+  Validate and apply a loyalty reward code to the cart. The discount will be reflected immediately. Reward is redeemed at checkout.
+  """
+  applyReward(code: String!): CartType!
+
+  """
+  Check out the current cart, creating an order. Loyalty reward (if applied) is redeemed at this point.
+  """
+  checkout: OrderType!
+
+  """Remove an item from the cart"""
+  removeFromCart(menuItemId: String!): CartType!
+
+  """Remove an applied reward from the cart"""
+  removeReward: CartType!
+
+  """Update the quantity of an item in the cart"""
+  updateCartItem(menuItemId: String!, quantity: Int!): CartType!
+}
+
+type OrderItemType {
+  id: String!
+  menuItemId: String!
+  name: String!
+  priceCents: Int!
+  quantity: Int!
+  subtotalCents: Int!
+}
+
+type OrderType {
+  createdAt: DateTime!
+  discountCents: Int!
+  id: String!
+  items: [OrderItemType!]!
+  redemptionId: String
+  rewardCode: String
+  rewardRedemptionStatus: String!
+  status: String!
+  subtotalCents: Int!
+  totalCents: Int!
+  userId: String!
+}
+
+type Query {
+  """View your current cart"""
+  cart: CartType
+
+  """Browse all available menu items"""
+  menu: [MenuItem!]!
+
+  """Browse menu items by category"""
+  menuByCategory(category: String!): [MenuItem!]
+
+  """List all menu categories"""
+  menuCategories: [String!]!
+
+  """Get a single menu item by ID"""
+  menuItem(id: String!): MenuItem!
+
+  """Get all orders for the current user"""
+  myOrders: [OrderType!]!
+
+  """Retrieve an order by ID"""
+  order(id: String!): OrderType!
+}
