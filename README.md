@@ -6,27 +6,12 @@ A backend service for a food ordering app with loyalty rewards integration. I bu
 
 ## Setup & Running
 
-### Prerequisites
-
-- Node.js 18+
-- The mock loyalty service running on `localhost:3001`
-
-### Install & Start
-
 ```bash
 npm install
 npm start
 # Server starts at http://localhost:3000/graphql
 ```
 
-### Environment Variables
-
-| Variable | Default | Description |
-|----------|---------|-------------|
-| `PORT` | `3000` | Port for the checkout service |
-| `LOYALTY_SERVICE_URL` | `http://localhost:3001` | Base URL for the loyalty service |
-| `DB_PATH` | `checkout.db` | SQLite database file path |
-| `NODE_ENV` | - | Set to `development` for SQL query logging |
 
 ### Running Tests
 
@@ -36,9 +21,6 @@ npm test
 
 ---
 
-## GraphQL API
-
-The service is available at `http://localhost:3000/graphql` with GraphQL Playground enabled.
 
 ### User Identity
 
